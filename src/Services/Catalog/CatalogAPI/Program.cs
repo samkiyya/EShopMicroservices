@@ -6,7 +6,10 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add/Register services with the dependency injection container.
 // This is where we add services like controllers, database contexts, authentication, etc.
-builder.Services.AddCarter();
+builder.Services.AddCarter(new DependencyContextAssemblyCatalog(
+        new[] { typeof(Program).Assembly }
+    ));
+
 builder.Services.AddMediatR(config =>
 {
     config.RegisterServicesFromAssembly(typeof(Program).Assembly);
