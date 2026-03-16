@@ -1,9 +1,15 @@
-﻿namespace CatalogAPI.Products.CreateProduct
+﻿using Carter;
+
+namespace CatalogAPI.Products.CreateProduct
 {
 
-    public record CreateProductCommand(string Name, List<string> Category, string Description, string ImageFile, decimal Price);
-    public record CreateProductResult(Guid Id);
-    public class CreateProductEndpoint
+    public record CreateProductRequest(string Name, List<string> Category, string Description, string ImageFile, decimal Price);
+    public record CreateProductRespone(Guid Id);
+    public class CreateProductEndpoint : ICarterModule
     {
+        public void AddRoutes(IEndpointRouteBuilder app)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
